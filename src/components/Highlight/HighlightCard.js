@@ -1,9 +1,9 @@
 import React from 'react';
 import { CardContent, Typography, Card, makeStyles } from '@material-ui/core';
+import CountUp from 'react-countup'
 
 const useStyles = makeStyles({
   wrapper: (props) => {
-    console.log({ props });
     if (props.type === 'confirmed') return { borderLeft: '5px solid #c9302c' };
     if (props.type === 'recovered') return { borderLeft: '5px solid #28a745' };
     else return { borderLeft: '5px solid gray' };
@@ -21,7 +21,7 @@ export default function HighlightCard({ title, count, type }) {
           {title}
         </Typography>
         <Typography variant='body2' component='span' className={classes.count}>
-            {count}
+            <CountUp end={count || 0} duration={2} separator=' ' />
         </Typography>
       </CardContent>
     </Card>
